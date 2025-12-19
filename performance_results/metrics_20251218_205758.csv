@@ -1,0 +1,14 @@
+Metric,Value,Unit
+Average Response Time,,ms
+Throughput,,req/sec
+Test Coverage,33,%
+Tests Passed,62,count
+Total Tests,66,count
+Success Rate,94,%
+Lines of Code,1458,lines
+Security Modules,19,modules
+API Endpoints,,endpoints
+Policies Implemented,6,policies
+Token Expiry,15,minutes
+Session Timeout,30,minutes
+Rate Limit,60,req/min

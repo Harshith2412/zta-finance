@@ -1,0 +1,91 @@
+{
+  "policies": [
+    {
+      "id": "account_read",
+      "resource": "account",
+      "action": "read",
+      "conditions": {
+        "user_verified": true,
+        "device_trusted": true,
+        "risk_score": {"max": 60}
+      }
+    },
+    {
+      "id": "account_write",
+      "resource": "account",
+      "action": "write",
+      "conditions": {
+        "user_verified": true,
+        "mfa_verified": true,
+        "device_trusted": true,
+        "risk_score": {"max": 40}
+      }
+    },
+    {
+      "id": "transaction_create",
+      "resource": "transaction",
+      "action": "create",
+      "conditions": {
+        "user_verified": true,
+        "mfa_verified": true,
+        "device_trusted": true,
+        "risk_score": {"max": 30},
+        "roles": ["account_holder", "admin"]
+      }
+    },
+    {
+      "id": "transaction_read",
+      "resource": "transaction",
+      "action": "read",
+      "conditions": {
+        "user_verified": true,
+        "device_trusted": true,
+        "risk_score": {"max": 50}
+      }
+    },
+    {
+      "id": "payment_execute",
+      "resource": "payment",
+      "action": "execute",
+      "conditions": {
+        "user_verified": true,
+        "mfa_verified": true,
+        "device_trusted": true,
+        "risk_score": {"max": 20},
+        "session_fresh": true,
+        "roles": ["account_holder", "authorized_signatory"]
+      }
+    },
+    {
+      "id": "admin_access",
+      "resource": "*",
+      "action": "*",
+      "conditions": {
+        "user_verified": true,
+        "mfa_verified": true,
+        "device_trusted": true,
+        "risk_score": {"max": 10},
+        "roles": ["admin", "super_admin"],
+        "ip_whitelisted": true
+      }
+    }
+  ],
+  "risk_factors": {
+    "unknown_device": 30,
+    "unknown_location": 20,
+    "unusual_time": 15,
+    "high_transaction_amount": 25,
+    "multiple_failed_attempts": 40,
+    "geo_mismatch": 35,
+    "tor_or_vpn": 50
+  },
+  "device_trust_requirements": {
+    "min_trust_score": 70,
+    "factors": [
+      "device_fingerprint",
+      "biometric_capability",
+      "secure_boot",
+      "encryption_enabled"
+    ]
+  }
+}

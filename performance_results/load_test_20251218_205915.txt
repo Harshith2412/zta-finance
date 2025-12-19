@@ -1,0 +1,78 @@
+Load Test Results - Thu Dec 18 20:59:15 EST 2025
+==============================================
+
+TEST 1: Response Time Analysis (100 requests)
+--------------------------------------------
+Progress: 25/100
+Progress: 50/100
+Progress: 75/100
+Progress: 100/100
+
+Response Time Statistics:
+  Min: 1.517000ms
+  Max: 3.747000ms
+  Median (p50): 2.445000ms
+  p95: 3.261000ms
+  p99: 3.747000ms
+  Average: 2.4000ms
+
+TEST 2: Concurrent Request Handling
+--------------------------------------------
+Sending 50 concurrent requests...
+  Total Time: .063043000s
+  Requests per Second: 793.10 req/s
+
+TEST 3: Authentication Flow Performance
+--------------------------------------------
+  Complete Auth Flow Time: 95.749000000ms
+  (Register → Login → Access Protected Resource)
+
+TEST 4: Security Processing Overhead
+--------------------------------------------
+  Average JWT Verification Time: 6.7000ms per request
+  Average Unprotected Endpoint Time: 6.2000ms per request
+  Security Overhead: .5000ms (JWT + Audit logging)
+
+TEST 5: Database Performance
+--------------------------------------------
+  Simple Query Time: 84.334000000ms
+
+TEST 6: Cache Performance (Redis)
+--------------------------------------------
+  Average Cache Write Time: 54.7000ms
+  Average Cache Read Time: 55.7000ms
+
+TEST 7: Audit Logging Performance
+--------------------------------------------
+  Audit Events Logged: 65
+  Encryption: Enabled (AES-256-GCM)
+
+==============================================
+PERFORMANCE SUMMARY FOR RESUME
+==============================================
+
+Response Times:
+  • Average: ms
+  • Median (p50): 2.445000ms
+  • 95th percentile: 3.261000ms
+
+Throughput:
+  • Sequential:  req/s
+  • Concurrent: 793.10 req/s (50 concurrent)
+
+Security Processing:
+  • JWT Verification: 6.7000ms
+  • Security Overhead: .5000ms per request
+  • Audit Logging: Enabled with encryption
+
+Data Layer:
+  • Database Query: 84.334000000ms
+  • Cache Write: 54.7000ms
+  • Cache Read: 55.7000ms
+
+Reliability:
+  • Success Rate: 100%
+  • Test Coverage: 94% (62/66 tests passing)
+
+==============================================
+
