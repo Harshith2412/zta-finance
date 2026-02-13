@@ -20,35 +20,6 @@ A production-ready Zero Trust Architecture implementation for financial services
 - PostgreSQL 13+
 - Redis 6+
 
-### Installation
-
-```bash
-# Clone and setup
-cd zta-finance
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-
-# Setup environment
-cp .env.example .env
-# Edit .env with your configuration
-
-# Initialize database
-python scripts/setup_db.py
-
-# Generate encryption keys
-python scripts/generate_keys.py
-
-# Run the application
-python -m src.api.gateway
-```
-
-### Using Docker
-
-```bash
-docker-compose up -d
-```
-
 ## Architecture
 
 This implementation follows NIST SP 800-207 Zero Trust Architecture guidelines:
@@ -59,33 +30,6 @@ This implementation follows NIST SP 800-207 Zero Trust Architecture guidelines:
 4. **Verify Explicitly**: Multi-factor authentication and device verification
 5. **Encrypt Everything**: End-to-end encryption for data in transit and at rest
 
-## API Usage
-
-```python
-import requests
-
-# Authenticate
-response = requests.post('http://localhost:8000/api/v1/auth/login', json={
-    'username': 'user@example.com',
-    'password': 'secure_password',
-    'mfa_token': '123456'
-})
-token = response.json()['access_token']
-
-# Access protected resource
-headers = {'Authorization': f'Bearer {token}'}
-response = requests.get('http://localhost:8000/api/v1/transactions', headers=headers)
-```
-
-## Testing
-
-```bash
-# Run all tests
-pytest tests/
-
-# Run with coverage
-pytest tests/ --cov=src --cov-report=html
-```
 
 ## Security Considerations
 
